@@ -1,0 +1,28 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/deteksi"
+        android:enabled="true"
+        android:icon="@drawable/camera"
+        android:title="@string/Deteksi" />
+    <item
+        android:id="@+id/stok"
+        android:enabled="true"
+        android:icon="@drawable/keranjang"
+        android:title="@string/Stok"/>
+    <item
+        android:id="@+id/home"
+        android:enabled="true"
+        android:icon="@drawable/home"
+        android:title="home" />
+    <item
+        android:id="@+id/informasi"
+        android:enabled="true"
+        android:icon="@drawable/info"
+        android:title="informasi"/>
+    <item
+        android:id="@+id/keluar"
+        android:enabled="true"
+        android:icon="@drawable/logout"
+        android:title="keluar"/>
+</menu>

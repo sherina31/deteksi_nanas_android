@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "37462441172",
+    "project_id": "klasifikasi-nanas",
+    "storage_bucket": "klasifikasi-nanas.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:37462441172:android:a8843dc8c710732a03cf41",
+        "android_client_info": {
+          "package_name": "com.example.cubocubo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "37462441172-vk7rg27c5inhh1rif8l7c8l3ngjvquo7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKSJ-rCSAj4cjh9XJj6kz9xuS1ezIN-r0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "37462441172-vk7rg27c5inhh1rif8l7c8l3ngjvquo7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login"
+    tools:context=".stoknanas">
+
+    <include layout="@layout/toolbar_stoknanas"/>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_marginTop="100dp"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="8dp"
+                app:layout_constraintBottom_toBottomOf="@+id/view"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:padding="20dp"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nanas Besar Matang"
+                        android:layout_alignParentLeft="true"
+                        android:textSize="19dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="40dp"
+                        android:text="Total   : "
+                        android:layout_alignParentLeft="true"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginLeft="100dp"
+                        android:text="78 Buah"
+                        android:layout_alignParentLeft="true"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"/>
+
+                    <ImageView
+                        android:id="@+id/imagestoknanas"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        tools:srcCompat="@tools:sample/avatars" />
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+<!--            <androidx.cardview.widget.CardView-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="120dp"-->
+<!--                android:layout_marginStart="24dp"-->
+<!--                android:layout_marginEnd="24dp"-->
+<!--                app:cardCornerRadius="8dp"-->
+<!--                app:cardElevation="8dp"-->
+<!--                app:layout_constraintBottom_toBottomOf="@+id/view"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintHorizontal_bias="0.5"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/view">-->
+
+<!--                <RelativeLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:padding="20dp"-->
+<!--                    android:layout_height="match_parent">-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Nanas Besar Set-Matang"-->
+<!--                        android:layout_alignParentLeft="true"-->
+<!--                        android:textSize="19dp"-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:textColor="@color/black"/>-->
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="40dp"-->
+<!--                        android:text="Total   : "-->
+<!--                        android:layout_alignParentLeft="true"-->
+<!--                        android:textSize="20dp"-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:textColor="@color/black"/>-->
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="40dp"-->
+<!--                        android:layout_marginLeft="100dp"-->
+<!--                        android:text="78 Buah"-->
+<!--                        android:layout_alignParentLeft="true"-->
+<!--                        android:textSize="20dp"-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:textColor="@color/black"/>-->
+
+<!--                    <ImageView-->
+<!--                        android:id="@+id/imageView"-->
+<!--                        android:layout_width="80dp"-->
+<!--                        android:layout_height="80dp"-->
+<!--                        android:layout_alignParentRight="true"-->
+<!--                        android:layout_centerVertical="true"-->
+<!--                        tools:srcCompat="@tools:sample/avatars" />-->
+<!--                </RelativeLayout>-->
+<!--            </androidx.cardview.widget.CardView>-->
+<!--            <androidx.cardview.widget.CardView-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="120dp"-->
+<!--                android:layout_marginStart="24dp"-->
+<!--                android:layout_marginEnd="24dp"-->
+<!--                app:cardCornerRadius="8dp"-->
+<!--                app:cardElevation="8dp"-->
+<!--                app:layout_constraintBottom_toBottomOf="@+id/view"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintHorizontal_bias="0.5"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/view">-->
+
+<!--                <RelativeLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:padding="20dp"-->
+<!--                    android:layout_height="match_parent">-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Nanas Sedang Matang"-->
+<!--                        android:layout_alignParentLeft="true"-->
+<!--                        android:textSize="19dp"-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:textColor="@color/black"/>-->
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="40dp"-->
+<!--                        android:text="Total   : "-->
+<!--                        android:layout_alignParentLeft="true"-->
+<!--                        android:textSize="20dp"-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:textColor="@color/black"/>-->
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="40dp"-->
+<!--                        android:layout_marginLeft="100dp"-->
+<!--                        android:text="78 Buah"-->
+<!--                        android:layout_alignParentLeft="true"-->
+<!--                        android:textSize="20dp"-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:textColor="@color/black"/>-->
+
+<!--                    <ImageView-->
+<!--                        android:id="@+id/imageView"-->
+<!--                        android:layout_width="80dp"-->
+<!--                        android:layout_height="80dp"-->
+<!--                        android:layout_alignParentRight="true"-->
+<!--                        android:layout_centerVertical="true"-->
+<!--                        tools:srcCompat="@tools:sample/avatars" />-->
+<!--                </RelativeLayout>-->
+<!--            </androidx.cardview.widget.CardView>-->
+<!--            <androidx.cardview.widget.CardView-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="120dp"-->
+<!--                android:layout_marginStart="24dp"-->
+<!--                android:layout_marginEnd="24dp"-->
+<!--                app:cardCornerRadius="8dp"-->
+<!--                app:cardElevation="8dp"-->
+<!--                app:layout_constraintBottom_toBottomOf="@+id/view"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintHorizontal_bias="0.5"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/view">-->
+
+<!--                <RelativeLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:padding="20dp"-->
+<!--                    android:layout_height="match_parent">-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Nanas Sedang Set-Matang"-->
+<!--                        android:layout_alignParentLeft="true"-->
+<!--                        android:textSize="19dp"-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:textColor="@color/black"/>-->
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="40dp"-->
+<!--                        android:text="Total   : "-->
+<!--                        android:layout_alignParentLeft="true"-->
+<!--                        android:textSize="20dp"-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:textColor="@color/black"/>-->
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="40dp"-->
+<!--                        android:layout_marginLeft="100dp"-->
+<!--                        android:text="78 Buah"-->
+<!--                        android:layout_alignParentLeft="true"-->
+<!--                        android:textSize="20dp"-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:textColor="@color/black"/>-->
+
+<!--                    <ImageView-->
+<!--                        android:id="@+id/imageView"-->
+<!--                        android:layout_width="80dp"-->
+<!--                        android:layout_height="80dp"-->
+<!--                        android:layout_alignParentRight="true"-->
+<!--                        android:layout_centerVertical="true"-->
+<!--                        tools:srcCompat="@tools:sample/avatars" />-->
+<!--                </RelativeLayout>-->
+<!--            </androidx.cardview.widget.CardView>-->
+<!--            <androidx.cardview.widget.CardView-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="120dp"-->
+<!--                android:layout_marginStart="24dp"-->
+<!--                android:layout_marginEnd="24dp"-->
+<!--                app:cardCornerRadius="8dp"-->
+<!--                app:cardElevation="8dp"-->
+<!--                app:layout_constraintBottom_toBottomOf="@+id/view"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintHorizontal_bias="0.5"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/view">-->
+
+<!--                <RelativeLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:padding="20dp"-->
+<!--                    android:layout_height="match_parent">-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Nanas Kecil Matang"-->
+<!--                        android:layout_alignParentLeft="true"-->
+<!--                        android:textSize="19dp"-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:textColor="@color/black"/>-->
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="40dp"-->
+<!--                        android:text="Total   : "-->
+<!--                        android:layout_alignParentLeft="true"-->
+<!--                        android:textSize="20dp"-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:textColor="@color/black"/>-->
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="40dp"-->
+<!--                        android:layout_marginLeft="100dp"-->
+<!--                        android:text="78 Buah"-->
+<!--                        android:layout_alignParentLeft="true"-->
+<!--                        android:textSize="20dp"-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:textColor="@color/black"/>-->
+
+<!--                    <ImageView-->
+<!--                        android:id="@+id/imageView"-->
+<!--                        android:layout_width="80dp"-->
+<!--                        android:layout_height="80dp"-->
+<!--                        android:layout_alignParentRight="true"-->
+<!--                        android:layout_centerVertical="true"-->
+<!--                        tools:srcCompat="@tools:sample/avatars" />-->
+<!--                </RelativeLayout>-->
+<!--            </androidx.cardview.widget.CardView>-->
+<!--            <androidx.cardview.widget.CardView-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="120dp"-->
+<!--                android:layout_marginStart="24dp"-->
+<!--                android:layout_marginEnd="24dp"-->
+<!--                app:cardCornerRadius="8dp"-->
+<!--                app:cardElevation="8dp"-->
+<!--                app:layout_constraintBottom_toBottomOf="@+id/view"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintHorizontal_bias="0.5"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/view">-->
+
+<!--                <RelativeLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:padding="20dp"-->
+<!--                    android:layout_height="match_parent">-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Nanas Kecil Set-Matang"-->
+<!--                        android:layout_alignParentLeft="true"-->
+<!--                        android:textSize="19dp"-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:textColor="@color/black"/>-->
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="40dp"-->
+<!--                        android:text="Total   : "-->
+<!--                        android:layout_alignParentLeft="true"-->
+<!--                        android:textSize="20dp"-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:textColor="@color/black"/>-->
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="40dp"-->
+<!--                        android:layout_marginLeft="100dp"-->
+<!--                        android:text="78 Buah"-->
+<!--                        android:layout_alignParentLeft="true"-->
+<!--                        android:textSize="20dp"-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:textColor="@color/black"/>-->
+
+<!--                    <ImageView-->
+<!--                        android:id="@+id/imageView"-->
+<!--                        android:layout_width="80dp"-->
+<!--                        android:layout_height="80dp"-->
+<!--                        android:layout_alignParentRight="true"-->
+<!--                        android:layout_centerVertical="true"-->
+<!--                        tools:srcCompat="@tools:sample/avatars" />-->
+<!--                </RelativeLayout>-->
+<!--            </androidx.cardview.widget.CardView>-->
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

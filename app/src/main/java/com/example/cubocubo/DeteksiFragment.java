@@ -1,12 +1,23 @@
 package com.example.cubocubo;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -19,10 +30,13 @@ public class DeteksiFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    private static final String TAG = DeteksiFragment.class.getSimpleName();
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private DeteksiAdapter adapter;
+    private RecyclerView rvDeteksi;
+    private DataService service;
 
     public DeteksiFragment() {
         // Required empty public constructor
@@ -55,10 +69,50 @@ public class DeteksiFragment extends Fragment {
         }
     }
 
+    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_deteksi, container, false);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+       View view = inflater.inflate(R.layout.fragment_deteksi,container,false);
+       rvDeteksi = view.findViewById(R.id.rv_deteksi);
+       return view;
     }
+
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle saveInstanceState) {
+        super.onViewCreated(view, saveInstanceState);
+        initViews();
+        adapter = new DeteksiAdapter(getContext());
+        rvDeteksi.setLayoutManager(new LinearLayoutManager(getContext()));
+        rvDeteksi.setAdapter(adapter);
+        service = ServiceGenerator.createBaseService(getContext(),DataService.class);
+        loadData();
+    }
+    private void loadData() {
+        Call<BaseResponse<List<M_tabel_deteksi>>> call = service.apiReadDeteksi();
+        call.enqueue(new Callback<BaseResponse<List<M_tabel_deteksi>>>() {
+            @Override
+            public void onResponse(Call<BaseResponse<List<M_tabel_deteksi>>> call,
+                                   Response<BaseResponse<List<M_tabel_deteksi>>> response) {
+                if (response.isSuccessful()) {
+                    List<M_tabel_deteksi> deteksiList = response.body().getData();
+                    adapter.addAll(deteksiList);
+                } else {
+                    Log.e(TAG, "Failed to load data: " + response.code());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse<List<M_tabel_deteksi>>> call, Throwable t) {
+                Log.e(TAG, "Failed to load data: " + t.getMessage());
+            }
+        });
+    }
+
+    private void initViews() {
+        rvDeteksi = getView().findViewById(R.id.rv_deteksi);
+    }
+
+
 }

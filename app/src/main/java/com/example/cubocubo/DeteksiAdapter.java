@@ -18,91 +18,56 @@ import java.util.List;
 
 public class DeteksiAdapter extends RecyclerView.Adapter<DeteksiAdapter.ViewHolder> {
     Context context;
-    List<M_tabel_deteksi> data;
+    List<M_tabel_deteksi> deteksiList;
     OnDeleteClickListener onDeleteClickListener;
     OnUpdateClickListener onUpdateClickListener;
 
     public DeteksiAdapter(Context context) {
         this.context = context;
-        data = new ArrayList<>();
+        deteksiList = new ArrayList<>();
     }
-    public void add(M_tabel_deteksi item) {
-        data.add(item);
-        notifyItemInserted(data.size() - 1);
+    public void addAll(List<M_tabel_deteksi> deteksiList ) {
+        this.deteksiList.clear();
+        this.deteksiList.addAll(deteksiList);
+        notifyDataSetChanged();
     }
-    public void addAll(List<M_tabel_deteksi> items) {
-        for (M_tabel_deteksi item : items) {
-            add(item);
-        }
-    }
-    public void setOnDeleteClickListener(OnDeleteClickListener onDeleteClickListener) {
-        this.onDeleteClickListener = onDeleteClickListener;
-    }
-    public void setOnUpdateClickListener(OnUpdateClickListener onUpdateClickListener) {
-        this.onUpdateClickListener = onUpdateClickListener;
-    }
-    public M_tabel_deteksi getData(int position) {
-        return data.get(position);
-    }
-    public void remove(int position) {
-        if (position >= 0 && position < data.size()) {
-            data.remove(position);
-            notifyItemRemoved(position);
-        }
+
+    @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.isi_deteksi,parent,false);
+        return new ViewHolder(view);
     }
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ViewHolder(parent);
-    }
-    @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.bind(data.get(position));
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+       M_tabel_deteksi deteksi = deteksiList.get(position);
+       holder.tvKematangan.setText(deteksi.getKematangan_nanas());
+       holder.tvUkuran.setText(deteksi.getUkuran_nanas());
+        if (deteksi.getUkuran_nanas().equals("besar")) {
+            holder.indikator.setImageResource(R.drawable.indikatormerah);
+        } else if (deteksi.getUkuran_nanas().equals("sedang")) {
+            holder.indikator.setImageResource(R.drawable.indikatorbiru);
+        } else if (deteksi.getUkuran_nanas().equals("kecil")) {
+            holder.indikator.setImageResource(R.drawable.indikatorhijau);
+        }
     }
     @Override
     public int getItemCount() {
-        return data.size();
+
+        return deteksiList.size();
     }
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvKematangan;
         TextView tvUkuran;
         ImageView indikator;
 
-        public ViewHolder(ViewGroup parent) {
-            super(LayoutInflater.from(parent.getContext()).inflate(R.layout.isi_deteksi, parent,
-                    false));
-            initViews();
-//            btnEdit.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    onUpdateClickListener.onUpdateClick(getAdapterPosition());
-//                }
-//            });
-//            btnRemove.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    onDeleteClickListener.onDeleteClick(getAdapterPosition());
-//                }
-//            });
-        }
-        public void bind(M_tabel_deteksi item) {
-            int nomer = getAdapterPosition() + 1;
-            tvKematangan.setText(item.getKematangan_nanas());
-            tvUkuran.setText(item.getUkuran_nanas());
-            if (item.getUkuran_nanas().equals("besar")) {
-                indikator.setImageResource(R.drawable.indikatormerah);
-            } else if (item.getUkuran_nanas().equals("sedang")) {
-                indikator.setImageResource(R.drawable.indikatorbiru);
-            } else if (item.getUkuran_nanas().equals("kecil")) {
-                indikator.setImageResource(R.drawable.indikatorhijau);
-            }
+        public ViewHolder(View itemView){
+            super(itemView);
+            tvKematangan = itemView.findViewById(R.id.tvKematangan);
+            tvUkuran = itemView.findViewById(R.id.tvUkuran);
+            indikator = itemView.findViewById(R.id.indikator);
         }
 
-        public void initViews() {
-            tvKematangan = (TextView) itemView.findViewById(R.id.tvKematangan);
-            tvUkuran = (TextView) itemView.findViewById(R.id.tvUkuran);
-            indikator = (ImageView) itemView.findViewById(R.id.indikator);
-
-        }
     }
 
 }

@@ -3,15 +3,26 @@ package com.example.cubocubo;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
 import android.content.DialogInterface;
+import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.FileUtils;
+import android.os.strictmode.FileUriExposedViolation;
 import android.provider.MediaStore;
 import android.widget.Button;
 import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import android.widget.ImageView;
+import android.view.View;
+import com.squareup.picasso.Picasso;
+import java.io.File;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -22,8 +33,14 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import static android.text.TextUtils.isEmpty;
+
+import org.w3c.dom.Text;
+
 public class signuppage extends AppCompatActivity {
     private static final String TAG = signuppage.class.getSimpleName();
+    private static final int MY_RESULT_CODE_PERMISSION = 1000;
+    private static final int MY_RESULT_CODE_FILECHOOSEER = 2000;
+    String lokasiFile;
     private DataService service;
     private EditText etUsername;
     private EditText etPassword;
@@ -37,7 +54,7 @@ public class signuppage extends AppCompatActivity {
         initViews();
         initListener();
         service = ServiceGenerator.createBaseService(this, DataService.class);
-
+        btnDaftar = findViewById(R.id.btnDaftar);
     }
 
     private void initListener() {
@@ -57,14 +74,55 @@ public class signuppage extends AppCompatActivity {
                     addData(username,password,no_hp);
             }
         });
+
         btnProfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            showImagePickerDialog();
+                if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getApplicationContext(),
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE) ==PackageManager.PERMISSION_GRANTED){
+                    pilihFile();
+            }else {
+                deteksiPermissionandroid();
             }
-        });
+        }
+    });
 
     }
+
+    private void pilihFile() {
+        String[] tipeFile =
+                {"image/jpg","image/jpeg,'image/png"};
+        Intent intentPilihFile = new Intent(Intent.ACTION_GET_CONTENT);
+        intentPilihFile.addCategory(Intent.CATEGORY_OPENABLE);
+        intentPilihFile.setType("*/*");
+        intentPilihFile.putExtra(Intent.EXTRA_MIME_TYPES, tipeFile);
+        startIntentSenderForResult(Intent.createChooser(intentPilihFile,"Pilih foto anda" ));
+
+    @Override
+    public void onActivityResult (int requestCode, int resultCode, Intext
+        switch (requestCode) {
+            case MY_RESULT_CODE_FILECHOOSEER:
+                if (resultCode == Activity.RESULT_OK) {
+                    if (data != null) {
+                        Uri fileUri = data.getData();
+                        String filePath = null;
+                        try {
+                            filePath = FileUtils.getPath(getApplicationContext());
+                        } catch (Exception e) {
+                            Toast.makeText((getApplicationContext(), ))
+                        }
+                        this.lokasiFile = filePath;
+                        //proses munculi gambar
+                        Picasso.get().load(new File(lokasiFile)).into();
+                        Toast.makeText(getApplicationContext(), );
+                        txtLokasi.setText.(lokasiFile);
+                    }
+                }
+                break;
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
 
     private void addData(String username, String password, String no_hp) {
         Call<BaseResponse> call = service.apiCreatePengguna(username,password,no_hp);
@@ -92,59 +150,5 @@ public class signuppage extends AppCompatActivity {
         btnProfil = (Button) findViewById(R.id.btnProfil);
         btnDaftar = (Button) findViewById(R.id.btnDaftar);
     }
-
-    private void showImagePickerDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Choose Image Source");
-        builder.setItems(new CharSequence[]{"Gallery", "Camera"}, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                switch (which) {
-                    case 0: // Gallery
-                        openGallery();
-                        break;
-                    case 1: // Camera
-                        openCamera();
-                        break;
-                }
-            }
-        });
-        builder.show();
-    }
-
-    private void openGallery() {
-        // Kode untuk membuka aplikasi galeri dan mengambil gambar dari galeri
-        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        startActivityForResult(intent, REQUEST_GALLERY);
-    }
-
-    private void openCamera() {
-        // Kode untuk membuka aplikasi kamera dan mengambil gambar dari kamera
-        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        startActivityForResult(intent, REQUEST_CAMERA);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK) {
-            if (requestCode == REQUEST_GALLERY) {
-                // Kode untuk menghandle gambar yang dipilih dari galeri
-                if (data != null) {
-                    Uri selectedImageUri = data.getData();
-                    // Proses gambar yang dipilih dari galeri
-                    // Contoh: menampilkan gambar pada ImageView
-                    imageView.setImageURI(selectedImageUri);
-                }
-            } else if (requestCode == REQUEST_CAMERA) {
-                // Kode untuk menghandle gambar yang diambil dari kamera
-                if (data != null) {
-                    Bitmap photo = (Bitmap) data.getExtras().get("data");
-                    // Proses gambar yang diambil dari kamera
-                    // Contoh: menampilkan gambar pada ImageView
-                    imageView.setImageBitmap(photo);
-                }
-            }
-        }
 
 }
